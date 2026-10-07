@@ -28,7 +28,7 @@ function downloadImages() {
   const loading = document.getElementById("loading");
   const error = document.getElementById("error");
 
-  loading.textContent = "Loading...";
+  loading.innerHTML = '<div class="spinner"></div>';
   error.textContent = "";
   output.innerHTML = "";
 
@@ -38,14 +38,14 @@ function downloadImages() {
 
   Promise.all(promises)
     .then(function (downloadedImages) {
-      loading.textContent = "";
+      loading.innerHTML = "";
 
       downloadedImages.forEach(function (img) {
         output.appendChild(img);
       });
     })
     .catch(function (err) {
-      loading.textContent = "";
+      loading.innerHTML = "";
       error.textContent = err;
     });
 }
